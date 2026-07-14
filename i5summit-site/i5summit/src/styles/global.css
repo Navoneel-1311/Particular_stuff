@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+  --paper: #F7F6F3;
+  --paper-alt: #EFEBE3;
+  --ink: #1A1613;
+  --maroon: #7A1130;
+  --maroon-deep: #4A0A1E;
+  --maroon-soft: #F1DEE2;
+  --gold: #B9862C;
+  --gold-soft: #F3E7CE;
+  --slate: #5B5651;
+  --line: rgba(26, 22, 19, 0.12);
+  --line-strong: rgba(26, 22, 19, 0.22);
+
+  --font-display: 'Archivo', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --container: 1180px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img { max-width: 100%; display: block; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* --- Eyebrow / exponent motif ---
+   The "i5" mark = 5 I's (Ideate, Inspire, Innovate, Induce, Invest).
+   We reuse a superscript-exponent typographic device throughout
+   as the site's signature: i¹ i² i³ i⁴ i⁵ */
+.exp {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--gold);
+}
+.exp sup {
+  font-size: 0.62em;
+  margin-left: 1px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--maroon);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--maroon);
+  align-self: center;
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 3px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14.5px;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:focus-visible {
+  outline: 2px solid var(--maroon);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--maroon);
+  color: var(--paper);
+}
+.btn-primary:hover { background: var(--maroon-deep); }
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+.btn-outline:hover { border-color: var(--maroon); color: var(--maroon); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--maroon-deep);
+}
+.btn-gold:hover { background: #a97a26; }
+
+/* --- Section rhythm --- */
+section { padding: 96px 0; }
+@media (max-width: 720px) {
+  section { padding: 64px 0; }
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+.section-head h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  margin-top: 14px;
+}
+
+hr.rule {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}

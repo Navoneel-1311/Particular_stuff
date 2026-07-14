@@ -1,0 +1,331 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const fiveIs = [
+  { n: 1, word: 'Ideate', copy: 'Sharpen a raw idea into something worth building — with structured feedback from people who\u2019ve done it before.' },
+  { n: 2, word: 'Inspire', copy: 'Hear directly from founders, operators, and investors about the decisions that actually moved their ventures forward.' },
+  { n: 3, word: 'Innovate', copy: 'Workshops and case sessions built around the mechanics of building something genuinely new.' },
+  { n: 4, word: 'Induce', copy: 'Panel discussions and mentor conversations designed to push half-formed plans into motion.' },
+  { n: 5, word: 'Invest', copy: 'Get Funded, the flagship pitch event, puts shortlisted ventures in front of active investors and VCs.' },
+];
+
+const events = [
+  {
+    tag: 'Flagship',
+    title: 'Get Funded',
+    copy: 'Startups pitch live to a panel of venture capitalists and angel investors, with shortlisting handled by an IIM Indore faculty jury.',
+  },
+  {
+    tag: 'Networking',
+    title: 'Chai pe Charcha',
+    copy: 'Informal, unscripted conversations between founders, investors, and students over chai — where most of the real networking happens.',
+  },
+  {
+    tag: 'Immersion',
+    title: 'A Day at IIM Indore',
+    copy: 'An immersion day for MBA aspirants — sit in on a case discussion and talk to current students about campus life.',
+  },
+  {
+    tag: 'Sessions',
+    title: 'Panels & Speaker Series',
+    copy: 'Founders and industry leaders unpack the calls that shaped their ventures, across three days of sessions.',
+  },
+];
+
+const stats = [
+  { n: '11', suffix: 'th', label: 'Edition' },
+  { n: '2000', suffix: '+', label: 'Participants' },
+  { n: '35', suffix: '', label: 'CXOs on stage' },
+  { n: '15', suffix: '+', label: 'Investors' },
+];
+---
+<Layout title="i5 Summit | IIM Indore | Central India's Largest Entrepreneurship Festival">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">11th Edition &middot; IIM Indore</span>
+        <h1 class="hero-title">
+          Reimagining the future,<br />
+          <span class="hero-title-accent">the Indian way.</span>
+        </h1>
+        <p class="hero-sub">
+          i5 Summit is Central India's largest entrepreneurship festival — three days of
+          founders, investors, and 2,000+ students, hosted on the IIM Indore campus.
+        </p>
+        <div class="hero-actions">
+          <a href="#register" class="btn btn-primary">Register now</a>
+          <a href="/events" class="btn btn-outline">See the events</a>
+        </div>
+      </div>
+      <div class="hero-mark" aria-hidden="true">
+        <span class="hero-i">i</span><span class="hero-5">5</span>
+      </div>
+    </div>
+
+    <div class="wrap stats-row">
+      {stats.map((s) => (
+        <div class="stat">
+          <p class="stat-num">{s.n}<span class="stat-suffix">{s.suffix}</span></p>
+          <p class="stat-label">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <hr class="rule wrap" />
+
+  <!-- ABOUT / THEME -->
+  <section class="about">
+    <div class="wrap about-grid">
+      <div class="section-head">
+        <span class="eyebrow">The theme</span>
+        <h2>Entrepreneurship, built on Indian ingenuity.</h2>
+      </div>
+      <p class="about-copy">
+        This year's theme centers on how entrepreneurship in India is evolving through
+        authentic, indigenous approaches — ventures rooted in local culture and values,
+        yet built for national and global impact. Over three days, i5 Summit brings
+        together students, industry leaders, and investors to trace that journey from
+        a raw idea to a fundable business.
+      </p>
+    </div>
+  </section>
+
+  <!-- THE 5 I's — signature section -->
+  <section class="fives">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why "i5"</span>
+        <h2>Five I's. One festival.</h2>
+      </div>
+      <div class="fives-list">
+        {fiveIs.map((item) => (
+          <div class="five-row">
+            <span class="exp">i<sup>{item.n}</sup></span>
+            <div>
+              <h3 class="five-word">{item.word}</h3>
+              <p class="five-copy">{item.copy}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS PREVIEW -->
+  <section class="events-preview">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">On campus</span>
+        <h2>Three days, four flagship formats.</h2>
+      </div>
+      <div class="events-grid">
+        {events.map((e) => (
+          <a href="/events" class="event-card">
+            <span class="event-tag">{e.tag}</span>
+            <h3>{e.title}</h3>
+            <p>{e.copy}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="register" class="cta">
+    <div class="wrap cta-inner">
+      <div>
+        <span class="eyebrow" style="color: var(--gold-soft);">Join us</span>
+        <h2>Be part of the 11th edition.</h2>
+        <p>Whether you're pitching, watching, or partnering — there's a seat for you at IIM Indore.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-gold">Register as a participant</a>
+        <a href="mailto:i5summit@iimidr.ac.in" class="btn btn-outline cta-outline">Partner with us</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hero { padding-top: 72px; padding-bottom: 56px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 32px;
+    }
+    .hero-title {
+      margin-top: 20px;
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 900;
+      line-height: 1.03;
+      letter-spacing: -0.02em;
+    }
+    .hero-title-accent { color: var(--maroon); }
+    .hero-sub {
+      margin-top: 24px;
+      max-width: 46ch;
+      font-size: 18px;
+      color: var(--slate);
+    }
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .hero-mark {
+      justify-self: end;
+      display: flex;
+      align-items: flex-start;
+      font-family: var(--font-display);
+      font-weight: 900;
+      line-height: 0.8;
+      color: var(--maroon);
+      user-select: none;
+    }
+    .hero-i { font-size: clamp(140px, 20vw, 260px); }
+    .hero-5 {
+      font-size: clamp(70px, 10vw, 130px);
+      color: var(--gold);
+      margin-top: -6px;
+    }
+
+    .stats-row {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .stat {
+      padding: 24px 8px;
+      text-align: center;
+      border-left: 1px solid var(--line);
+    }
+    .stat:first-child { border-left: none; }
+    .stat-num {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: clamp(24px, 3vw, 34px);
+      color: var(--maroon);
+    }
+    .stat-suffix { color: var(--gold); }
+    .stat-label {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--slate);
+    }
+
+    .rule { margin: 0 auto; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-copy {
+      font-size: 17px;
+      color: var(--slate);
+      max-width: 56ch;
+    }
+
+    .fives { background: var(--paper-alt); }
+    .fives-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .five-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+    .five-row:last-child { border-bottom: 1px solid var(--line); }
+    .exp { font-size: 22px; }
+    .five-word {
+      font-size: 21px;
+      font-weight: 800;
+    }
+    .five-copy {
+      margin-top: 6px;
+      color: var(--slate);
+      max-width: 62ch;
+      font-size: 15.5px;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .event-card {
+      background: var(--paper);
+      padding: 28px 22px;
+      transition: background 0.15s ease;
+    }
+    .event-card:hover { background: var(--paper-alt); }
+    .event-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .event-card h3 {
+      margin-top: 12px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .event-card p {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--slate);
+    }
+
+    .cta { background: var(--maroon-deep); color: var(--paper); }
+    .cta-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cta h2 {
+      color: var(--paper);
+      margin-top: 12px;
+      font-size: clamp(26px, 3.4vw, 38px);
+    }
+    .cta p {
+      margin-top: 12px;
+      color: rgba(247, 246, 243, 0.72);
+      max-width: 42ch;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .cta-outline { border-color: rgba(247, 246, 243, 0.35); color: var(--paper); }
+    .cta-outline:hover { border-color: var(--gold-soft); color: var(--gold-soft); }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-mark { justify-self: start; margin-top: 24px; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(3) { border-left: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .events-grid { grid-template-columns: repeat(2, 1fr); }
+      .five-row { grid-template-columns: 50px 1fr; }
+    }
+    @media (max-width: 560px) {
+      .events-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</Layout>
