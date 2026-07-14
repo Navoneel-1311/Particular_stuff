@@ -1,0 +1,203 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "i5 Summit — Central India's largest entrepreneurship festival, hosted at IIM Indore.",
+} = Astro.props;
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/events', label: 'Events' },
+  { href: '/speakers', label: 'Guests' },
+  { href: '/team', label: 'Team' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-row">
+        <a href="/" class="brand">
+          <span class="brand-mark">i<sup>5</sup></span>
+          <span class="brand-word">SUMMIT</span>
+        </a>
+        <nav class="main-nav" aria-label="Primary">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              class={currentPath === item.href ? 'active' : ''}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <a href="#register" class="btn btn-primary header-cta">Register</a>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div class="footer-brand">
+          <span class="brand-mark">i<sup>5</sup></span>
+          <span class="brand-word">SUMMIT</span>
+          <p>Central India's largest entrepreneurship festival. Hosted at IIM Indore.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="/events">Events</a>
+          <a href="/speakers">Guests</a>
+          <a href="/team">Team</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="mailto:i5summit@iimidr.ac.in">i5summit@iimidr.ac.in</a>
+          <a href="https://www.instagram.com/i5summit/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/company/i5summit-iimindore" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Campus</h4>
+          <p class="muted">IIM Indore, Rau-Pithampur Road,<br />Indore, Madhya Pradesh 453556</p>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <p class="muted">&copy; {new Date().getFullYear()} i5 Summit, IIM Indore. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <style>
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(247, 246, 243, 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+      }
+      .header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 76px;
+        gap: 24px;
+      }
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+      }
+      .brand-mark {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 22px;
+        color: var(--maroon);
+      }
+      .brand-mark sup {
+        color: var(--gold);
+        font-size: 13px;
+      }
+      .brand-word {
+        font-family: var(--font-mono);
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        color: var(--ink);
+      }
+      .main-nav {
+        display: flex;
+        gap: 32px;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 14.5px;
+      }
+      .main-nav a {
+        position: relative;
+        padding: 4px 0;
+        color: var(--slate);
+        transition: color 0.15s ease;
+      }
+      .main-nav a:hover,
+      .main-nav a.active {
+        color: var(--maroon);
+      }
+      .main-nav a.active::after {
+        content: '';
+        position: absolute;
+        left: 0; right: 0; bottom: -6px;
+        height: 2px;
+        background: var(--gold);
+      }
+      .header-cta { padding: 10px 20px; font-size: 13.5px; }
+
+      @media (max-width: 780px) {
+        .main-nav { display: none; }
+        .header-row { height: 64px; }
+      }
+
+      .site-footer {
+        background: var(--maroon-deep);
+        color: var(--paper);
+        padding: 72px 0 0;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1fr 1fr;
+        gap: 40px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid rgba(247, 246, 243, 0.14);
+      }
+      .footer-brand .brand-mark { color: var(--gold-soft); }
+      .footer-brand .brand-word { color: rgba(247, 246, 243, 0.8); }
+      .footer-brand p {
+        margin-top: 14px;
+        font-size: 14px;
+        color: rgba(247, 246, 243, 0.65);
+        max-width: 30ch;
+      }
+      .footer-col h4 {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(247, 246, 243, 0.55);
+        margin-bottom: 16px;
+      }
+      .footer-col a, .footer-col p {
+        display: block;
+        font-size: 14.5px;
+        color: rgba(247, 246, 243, 0.85);
+        margin-bottom: 10px;
+      }
+      .footer-col a:hover { color: var(--gold-soft); }
+      .muted { color: rgba(247, 246, 243, 0.55) !important; }
+      .footer-bottom {
+        padding: 22px 0;
+        font-size: 13px;
+      }
+      @media (max-width: 780px) {
+        .footer-grid { grid-template-columns: 1fr 1fr; }
+      }
+    </style>
+  </body>
+</html>
